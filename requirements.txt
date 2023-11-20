@@ -1,0 +1,14 @@
+blinker
+click
+colorama
+Flask
+gunicorn
+importlib-metadata
+itsdangerous
+Jinja2
+MarkupSafe
+packaging
+Pillow
+PySimpleGUI
+Werkzeug
+zipp
