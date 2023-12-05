@@ -1,6 +1,6 @@
 import os
 from PIL import Image
-import PySimpleGUI as sg
+# import PySimpleGUI as sg
 import io
 
 def thumb_maker(image_path, ods=0):
@@ -28,37 +28,38 @@ def thumb_maker(image_path, ods=0):
         # try it for 3 times then pass
         print("ERROR :: -->", e, "<-- ::")
     return thumb_path
-if __name__=="__main__":
-        
-    # GUI layout
-    layout = [
-        [sg.Text("Image Path:"), sg.Input(key="-IMAGE_PATH-"), sg.FileBrowse()],
-        [sg.Image(key="-IMAGE_PREVIEW-")],
-        [sg.Text(size=(40, 1), key="-OUTPUT-")],
-        [sg.Button("Generate Thumbnail"), sg.Button("Exit")]
-    ]
 
-    # Create the window
-    window = sg.Window("Thumbnail Maker", layout)
+# if __name__=="__main__":
+        
+#     # GUI layout
+#     layout = [
+#         [sg.Text("Image Path:"), sg.Input(key="-IMAGE_PATH-"), sg.FileBrowse()],
+#         [sg.Image(key="-IMAGE_PREVIEW-")],
+#         [sg.Text(size=(40, 1), key="-OUTPUT-")],
+#         [sg.Button("Generate Thumbnail"), sg.Button("Exit")]
+#     ]
 
-    # Event loop
-    while True:
-        event, values = window.read()
+#     # Create the window
+#     window = sg.Window("Thumbnail Maker", layout)
+
+#     # Event loop
+#     while True:
+#         event, values = window.read()
         
-        if event == sg.WINDOW_CLOSED or event == "Exit":
-            break
+#         if event == sg.WINDOW_CLOSED or event == "Exit":
+#             break
         
-        if event == "Generate Thumbnail":
-            image_path = values["-IMAGE_PATH-"]
-            thumb_path = thumb_maker(image_path, 1)
-            window["-OUTPUT-"].update(f"Thumbnail generated: {thumb_path}")
+#         if event == "Generate Thumbnail":
+#             image_path = values["-IMAGE_PATH-"]
+#             thumb_path = thumb_maker(image_path, 1)
+#             window["-OUTPUT-"].update(f"Thumbnail generated: {thumb_path}")
             
-            # Update image preview
-            image = Image.open(image_path)
-            image.thumbnail((200, 200))
-            bio = io.BytesIO()
-            image.save(bio, format="PNG")
-            window["-IMAGE_PREVIEW-"].update(data=bio.getvalue())
+#             # Update image preview
+#             image = Image.open(image_path)
+#             image.thumbnail((200, 200))
+#             bio = io.BytesIO()
+#             image.save(bio, format="PNG")
+#             window["-IMAGE_PREVIEW-"].update(data=bio.getvalue())
             
-    # Close the window
-    window.close()
+#     # Close the window
+#     window.close()
